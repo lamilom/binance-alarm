@@ -13,10 +13,10 @@ client = Client(api_key, secret_key)
 depth = client.get_recent_trades(symbol=symb)
 ethusdt = depth[0]
 currprice = float(ethusdt["price"])
-while currprice > max_price and currprice < min_price:
+while currprice < max_price and currprice > min_price:
     depth = client.get_recent_trades(symbol=symb)
     ethusdt = depth[0]
     currprice = float(ethusdt["price"])
-    print (ethusdt["price"])
+    print (f"The {symb} current price is {currprice}")
     time.sleep(1)
 playsound("alarm.mp3")
